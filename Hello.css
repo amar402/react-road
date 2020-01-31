@@ -1,0 +1,14 @@
+h1, p {
+  font-family: Lato;
+}
+
+
+
+td{
+  margin-left:5px;
+}
+
+li{
+  color:blue;
+  display: "block"
+}
