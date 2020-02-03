@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./Hello.css";
 import TableList from "./countryList/table";
+import App from "./Home/App";
 
 const URL = "https://restcountries.eu/rest/v2/all";
 
@@ -33,13 +34,11 @@ class Hello extends Component {
     const newcountryList = this.state.apiresponse.filter(l => {
       return l.name !== country.name;
     });
-
     const newsearchList =
       this.state.result &&
       this.state.result.filter(l => {
         return l.name !== country.name;
       });
-
     this.setState({ result: newsearchList, apiresponse: newcountryList });
   };
   isAction = e => {
