@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-
 import "./Hello.css";
 import TableList from "./table";
 
@@ -15,8 +14,8 @@ class Hello extends Component {
       apiresponse: ""
     };
     this.isSearched = this.isSearched.bind(this);
-    // this.isAction = this.isAction.bind(this);
-    this.remove= this.remove.bind(this)
+
+    this.remove = this.remove.bind(this);
   }
   isSearched = e => {
     const result = this.state.apiresponse.filter(val =>
@@ -30,7 +29,19 @@ class Hello extends Component {
     );
     this.setState({ result: result, searchItem: e.target.value });
   };
-  remove=()=>console.log(" i am good ")
+  remove = country => {
+    const newcountryList = this.state.apiresponse.filter(l => {
+      return l.name !== country.name;
+    });
+
+    const newsearchList =
+      this.state.result &&
+      this.state.result.filter(l => {
+        return l.name !== country.name;
+      });
+
+    this.setState({ result: newsearchList, apiresponse: newcountryList });
+  };
   isAction = e => {
     const newlist = this.state.apiresponse.filter(l => {
       return l.name.includes(e.name);
@@ -41,7 +52,6 @@ class Hello extends Component {
     fetch(URL)
       .then(response => response.json())
       .then(res => {
-        alert(" I am response");
         this.setState({ apiresponse: res });
       });
   }

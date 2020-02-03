@@ -1,14 +1,6 @@
 import React from "react";
 import { Table } from "react-bootstrap";
 
- function isAction(e,apiresponse) {
-    const newlist = apiresponse.filter(l => {
-      return l.name.includes(e.name);
-    });
-   // this.setState({ result: newlist });
-   console.log(newlist)
-  };
-
 function TableList({ result, apiresponse, remove }) {
   return (
     <Table striped bordered condensed hover>
@@ -26,14 +18,14 @@ function TableList({ result, apiresponse, remove }) {
           apiresponse.map(x => (
             <tr key={x.name}>
               <td>{x.name}</td>
-              <td style={{ display: "block", border: "1px solid red" }}>
+              <td >
                 {x.languages.map(lan => (
-                  <li key={lan.name}>{lan.name}</li>
+                  <li style={{ display: "block" }} key={lan.name}>{lan.name}</li>
                 ))}
               </td>
               <td>{x.capital}</td>
               <td>
-                <button onClick={()=>isAction(x,apiresponse)}>Remove </button>
+                <button onClick={() => remove(x)}>Remove </button>
               </td>
             </tr>
           ))}
@@ -43,12 +35,12 @@ function TableList({ result, apiresponse, remove }) {
               <td>{x.name}</td>
               <td style={{ display: "block" }}>
                 {x.languages.map(lan => (
-                  <li>{lan.name}</li>
+                  <li style={{ display: "block" }} key={lan.name}>{lan.name}</li>
                 ))}
               </td>
               <td>{x.capital}</td>
               <td>
-                <button onClick={remove}>Remove </button>
+                <button onClick={() => remove(x)}>Remove </button>
               </td>
             </tr>
           ))}
