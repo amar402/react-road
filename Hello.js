@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./Hello.css";
-import TableList from "./table";
+import TableList from "./countryList/table";
 
 const URL = "https://restcountries.eu/rest/v2/all";
 
